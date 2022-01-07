@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Probenmonitoring</string>
+    <string name="Button_Connect">connect to MQTT Broker</string>
+    <string name="Button_Publish">message schicken</string>
+    <string name="Button_Subscribe">Subscribe</string>
+    <string name="Button_Scan_PKID">Scan PKID</string>
+    <string name="EditText_Topic">Example/Topic</string>
+    <string name="TextView_Label_Status">Status Messages shown below:</string>
+    <string name="TextView_Label_Content">Content published in selected Topic shown below:</string>
+</resources>

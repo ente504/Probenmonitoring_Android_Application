@@ -1,0 +1,2 @@
+rootProject.name = "Probenmonitoring"
+include ':app'

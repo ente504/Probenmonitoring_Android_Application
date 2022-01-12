@@ -1,5 +1,6 @@
 package com.ehenn.probenmonitoring;
 
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -92,12 +93,32 @@ public class MainActivity extends AppCompatActivity {
                 mqtt_subscribe_topic("Steuerung/PKID");
             }
         });
+
+        button_scan_pkid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
+                startActivityForResult(intent, 2);
+            }
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2)
+        {
+            PKID=data.getStringExtra("PKID");
+            textView_status.append(get_timestamp() + " PKID: " + PKID);
+        }
     }
 
 
     public void mqtt_connect(String mqtt_broker, String mqtt_user, String mqtt_passkey) {
 
-        //TODO: stürtzt ab wenn kein Brooker online
+        //TODO: stürtzt ab nach einiger zeit
 
         String clientId = MqttClient.generateClientId();
         client = new MqttAndroidClient(this.getApplicationContext(), "tcp://192.168.192.21:1883",

@@ -4,7 +4,26 @@
     <string name="Button_Publish">message schicken</string>
     <string name="Button_Subscribe">Subscribe</string>
     <string name="Button_Scan_PKID">Scan PKID</string>
+    <string name="Button_Commit_PKID">commit PKID</string>
+    <string name="Button_start_online_Monitor">start online Monitor</string>
     <string name="EditText_Topic">Example/Topic</string>
     <string name="TextView_Label_Status">Status Messages shown below:</string>
     <string name="TextView_Label_Content">Content published in selected Topic shown below:</string>
+    <string name="TextView_DescriptionTop">mobile PIs: </string>
+    <string name="TextView_DescriptionBottom">stationary PIs: </string>
+    <string name="TextView_mpi1">PI 1: </string>
+    <string name="TextView_mpi2">PI 2: </string>
+    <string name="TextView_mpi3">PI 3: </string>
+    <string name="TextView_mpi4">PI 4: </string>
+    <string name="TextView_mpi5">PI 5: </string>
+    <string name="TextView_mpi6">PI 6: </string>
+    <string name="TextView_mpi7">PI 7: </string>
+    <string name="TextView_mpi8">PI 8: </string>
+    <string name="TextView_mpi9">PI 9: </string>
+    <string name="TextView_mpi10">PI 10: </string>
+    <string name="TextView_mpi11">PI 11: </string>
+    <string name="TextView_mpi12">PI 12: </string>
+    <string name="TextView_spi1">stationary PI 1: </string>
+    <string name="TextView_spi2">stationary PI 2: </string>
+    <string name="TextView_DevPlatform">DevPlatform: </string>
 </resources>

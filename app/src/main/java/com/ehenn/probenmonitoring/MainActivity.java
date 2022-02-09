@@ -21,6 +21,7 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
@@ -34,19 +35,19 @@ public class MainActivity extends AppCompatActivity {
     private Button button_publish;
     private Button button_subscribe;
     private Button button_scan_pkid;
+    private Button button_commit_pkid;
+    private Button button_start_online_Monitor;
     private TextView textView_status;
     private TextView textView_content;
+    private TextView textView_DevPlatform;
     private EditText editText_topic;
     private NestedScrollView nestedScrollView_status;
     private NestedScrollView nestedScrollView_content;
-    //TODO: Build Status TextView like in ProErApp
-    //TODO: integrate VCS
-    //TODO: Build QR Code scanner
 
 
     MqttAndroidClient client;
 
-    String MQTT_Broker = "tcp://192.168.192.21:1883";
+    String MQTT_Broker = "tcp://192.168.178.53:1883";
     String MQTT_User = null;
     String MQTT_PassKey = null;
     String PKID;
@@ -64,8 +65,11 @@ public class MainActivity extends AppCompatActivity {
         button_publish = findViewById(R.id.Button_Publish);
         button_subscribe = findViewById(R.id.Button_Subscribe);
         button_scan_pkid = findViewById(R.id.Button_Scan_PKID);
+        button_commit_pkid = findViewById(R.id.Button_Commit_PKID);
+        button_start_online_Monitor = findViewById(R.id.Button_start_online_Monitor);
         textView_status = findViewById(R.id.TextView_Status);
         textView_content = findViewById(R.id.TextView_Content);
+        textView_DevPlatform = findViewById(R.id.TextView_DevPlatform);
         editText_topic = findViewById(R.id.EditText_Topic);
         nestedScrollView_status = findViewById(R.id.nestedScrollView_status);
         nestedScrollView_content = findViewById(R.id.nestedScrollView_Content);
@@ -101,6 +105,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 2);
             }
         });
+
+        button_commit_pkid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String topic = editText_topic.getText().toString();
+                mqtt_publish_message(topic, PKID);
+            }
+        });
+
+        button_start_online_Monitor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                online_status("DevPlatform/online");
+            }
+        });
     }
 
 
@@ -111,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 2)
         {
             PKID=data.getStringExtra("PKID");
-            textView_status.append(get_timestamp() + " PKID: " + PKID);
+            textView_status.append(get_timestamp() + " PKID: " + PKID + "\n");
         }
     }
 
@@ -121,11 +140,17 @@ public class MainActivity extends AppCompatActivity {
         //TODO: stürtzt ab nach einiger zeit
 
         String clientId = MqttClient.generateClientId();
-        client = new MqttAndroidClient(this.getApplicationContext(), "tcp://192.168.192.21:1883",
+        client = new MqttAndroidClient(this.getApplicationContext(), "tcp://192.168.178.53:1883",
                         clientId);
+        MqttConnectOptions options = new MqttConnectOptions();
+        options.setUserName("detact");
+        options.setPassword("detact#1234".toCharArray());
+
+        textView_status.append("aproching try block");
 
         try {
-            IMqttToken token = client.connect();
+            IMqttToken token = client.connect(options);
+            textView_status.append("in try block 1");
 
             token.setActionCallback(new IMqttActionListener() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
@@ -201,6 +226,48 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }catch(MqttException e){
+            Log.i(TAG, "something happened");
+        }
+    }
+
+
+    public void online_status(String topic) {
+
+        try {
+            client.subscribe(topic, 1);
+
+            Log.i(TAG, "subscribed to Topic " + topic + " on " + MQTT_Broker);
+            textView_status.append("subscribed to Topic " + topic + " on " + MQTT_Broker + "\n");
+            scrollToBottom_textView_status();
+
+            client.setCallback(new MqttCallback() {
+                @Override
+                public void connectionLost(Throwable cause) {
+                    Log.e(TAG, "connection to " + topic + " on " + MQTT_Broker + " has been lost");
+                    textView_status.append("connection to " + topic + " on " + MQTT_Broker + " has been lost" + "\n");
+                    scrollToBottom_textView_status();
+                }
+
+                @Override
+                public void messageArrived(String topic, MqttMessage message) throws Exception {
+                    String Payload = new String(message.getPayload());
+                    Log.i(TAG, "a message has arrived");
+                    textView_content.append(get_timestamp() + " " + (Payload + "\n"));
+                    scrollToBottom_textView_content();
+                    if (Payload.equals("True")) {
+                        textView_DevPlatform.setBackgroundColor(getResources().getColor(R.color.teal_700));}
+                    else {
+                        textView_DevPlatform.setBackgroundColor(getResources().getColor(R.color.dark_grey));
+                    }
+                }
+
+                @Override
+                public void deliveryComplete(IMqttDeliveryToken token) {
+                    Log.i(TAG, "message delivery completed");
+                }
+            });
+        } catch (MqttException e) {
+            Log.i(TAG, "something happened");
         }
     }
 
@@ -219,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
         nestedScrollView_content.post(new Runnable() {
             @Override
             public void run() {
-                nestedScrollView_status.fullScroll(View.FOCUS_DOWN);
+                nestedScrollView_content.fullScroll(View.FOCUS_DOWN);
             }
         });
     }

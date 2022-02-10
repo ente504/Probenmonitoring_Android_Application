@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -37,6 +39,26 @@ public class MainActivity extends AppCompatActivity {
     private Button button_scan_pkid;
     private Button button_commit_pkid;
     private Button button_start_online_Monitor;
+    private RadioButton radioButton_Mobile1;
+    private RadioButton radioButton_Mobile2;
+    private RadioButton radioButton_Mobile3;
+    private RadioButton radioButton_Mobile4;
+    private RadioButton radioButton_Mobile5;
+    private RadioButton radioButton_Mobile6;
+    private RadioButton radioButton_Mobile7;
+    private RadioButton radioButton_Mobile8;
+    private RadioButton radioButton_Mobile9;
+    private RadioButton radioButton_Mobile10;
+    private RadioButton radioButton_Mobile11;
+    private RadioButton radioButton_Mobile12;
+    private RadioButton radioButton_Terminal1;
+    private RadioButton radioButton_Terminal2;
+    private RadioButton radioButton_group1;
+    private RadioButton radioButton_group2;
+    private RadioButton radioButton_group3;
+    private RadioGroup radioGroup1;
+    private RadioGroup radioGroup2;
+    private RadioGroup radioGroup3;
     private TextView textView_status;
     private TextView textView_content;
     private TextView textView_DevPlatform;
@@ -51,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     String MQTT_User = null;
     String MQTT_PassKey = null;
     String PKID;
+    String actual_Station_ID = "";
 
 
     @Override
@@ -67,10 +90,32 @@ public class MainActivity extends AppCompatActivity {
         button_scan_pkid = findViewById(R.id.Button_Scan_PKID);
         button_commit_pkid = findViewById(R.id.Button_Commit_PKID);
         button_start_online_Monitor = findViewById(R.id.Button_start_online_Monitor);
+
+        radioButton_Mobile1 = findViewById(R.id.RadioButton_Mobile1);
+        radioButton_Mobile2 = findViewById(R.id.RadioButton_Mobiel2);
+        radioButton_Mobile3 = findViewById(R.id.RadioButton_Mobiel3);
+        radioButton_Mobile4 = findViewById(R.id.RadioButton_Mobiel4);
+        radioButton_Mobile5 = findViewById(R.id.RadioButton_Mobiel5);
+        radioButton_Mobile6 = findViewById(R.id.RadioButton_Mobiel6);
+        radioButton_Mobile7 = findViewById(R.id.RadioButton_Mobiel7);
+        radioButton_Mobile8 = findViewById(R.id.RadioButton_Mobiel8);
+        radioButton_Mobile9 = findViewById(R.id.RadioButton_Mobiel9);
+        radioButton_Mobile10 = findViewById(R.id.RadioButton_Mobiel10);
+        radioButton_Mobile11 = findViewById(R.id.RadioButton_Mobiel11);
+        radioButton_Mobile12 = findViewById(R.id.RadioButton_Mobiel12);
+        radioButton_Terminal1 = findViewById(R.id.RadioButton_Terminal1);
+        radioButton_Terminal2 = findViewById(R.id.RadioButton_Terminal2);
+
+        radioGroup1 = findViewById(R.id.RadioGroup1);
+        radioGroup2 = findViewById(R.id.RadioGroup2);
+        radioGroup3 = findViewById(R.id.RadioGroup3);
+
         textView_status = findViewById(R.id.TextView_Status);
         textView_content = findViewById(R.id.TextView_Content);
         textView_DevPlatform = findViewById(R.id.TextView_DevPlatform);
+
         editText_topic = findViewById(R.id.EditText_Topic);
+
         nestedScrollView_status = findViewById(R.id.nestedScrollView_status);
         nestedScrollView_content = findViewById(R.id.nestedScrollView_Content);
 
@@ -117,7 +162,188 @@ public class MainActivity extends AppCompatActivity {
         button_start_online_Monitor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                online_status("DevPlatform/online");
+                online_status(radioButton_Mobile1);
+                online_status(radioButton_Mobile2);
+                online_status(radioButton_Mobile3);
+                online_status(radioButton_Mobile4);
+                online_status(radioButton_Mobile5);
+                online_status(radioButton_Mobile6);
+                online_status(radioButton_Mobile7);
+                online_status(radioButton_Mobile8);
+                online_status(radioButton_Mobile9);
+                online_status(radioButton_Mobile10);
+                online_status(radioButton_Mobile11);
+                online_status(radioButton_Mobile12);
+                online_status(radioButton_Terminal1);
+                online_status(radioButton_Terminal2);
+            }
+        });
+
+        radioButton_Mobile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup2.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile1.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile1.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup2.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile2.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile2.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup2.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile3.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile3.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup2.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile4.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile4.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup2.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile5.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile5.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup2.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile6.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile6.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile7.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile7.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile8.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile8.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile9.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile9.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile10.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile10.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile11.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile11.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Mobile12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup3.clearCheck();
+                if (radioButton_Mobile12.isChecked()) {
+                    actual_Station_ID = radioButton_Mobile12.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Terminal1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup2.clearCheck();
+                if (radioButton_Terminal1.isChecked()) {
+                    actual_Station_ID = radioButton_Terminal1.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
+            }
+        });
+
+        radioButton_Terminal2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioGroup1.clearCheck();
+                radioGroup2.clearCheck();
+                if (radioButton_Terminal2.isChecked()) {
+                    actual_Station_ID = radioButton_Terminal2.getText().toString();
+                    textView_status.append(actual_Station_ID);
+                }
             }
         });
     }
@@ -146,8 +372,6 @@ public class MainActivity extends AppCompatActivity {
         options.setUserName("detact");
         options.setPassword("detact#1234".toCharArray());
 
-        textView_status.append("aproching try block");
-
         try {
             IMqttToken token = client.connect(options);
             textView_status.append("in try block 1");
@@ -175,6 +399,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void mqtt_publish_message(String topic, String payload) {
@@ -231,33 +456,142 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void online_status(String topic) {
+    public void online_status(RadioButton element) {
 
         try {
+            String topic = element.getText().toString() + "/online";
+
             client.subscribe(topic, 1);
 
             Log.i(TAG, "subscribed to Topic " + topic + " on " + MQTT_Broker);
-            textView_status.append("subscribed to Topic " + topic + " on " + MQTT_Broker + "\n");
-            scrollToBottom_textView_status();
 
             client.setCallback(new MqttCallback() {
                 @Override
                 public void connectionLost(Throwable cause) {
                     Log.e(TAG, "connection to " + topic + " on " + MQTT_Broker + " has been lost");
-                    textView_status.append("connection to " + topic + " on " + MQTT_Broker + " has been lost" + "\n");
-                    scrollToBottom_textView_status();
                 }
 
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     String Payload = new String(message.getPayload());
+
                     Log.i(TAG, "a message has arrived");
-                    textView_content.append(get_timestamp() + " " + (Payload + "\n"));
-                    scrollToBottom_textView_content();
                     if (Payload.equals("True")) {
-                        textView_DevPlatform.setBackgroundColor(getResources().getColor(R.color.teal_700));}
-                    else {
-                        textView_DevPlatform.setBackgroundColor(getResources().getColor(R.color.dark_grey));
+                        if (topic.equals("mobile 1/online")){
+                            radioButton_Mobile1.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 2/online")){
+                            radioButton_Mobile2.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 3/online")){
+                            radioButton_Mobile3.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 4/online")){
+                            radioButton_Mobile4.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 5/online")){
+                            radioButton_Mobile5.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 6/online")){
+                            radioButton_Mobile6.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 7/online")){
+                            radioButton_Mobile7.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 8/online")){
+                            radioButton_Mobile8.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 9/online")){
+                            radioButton_Mobile9.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 10/online")){
+                            radioButton_Mobile10.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 11/online")){
+                            radioButton_Mobile11.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("mobile 12/online")){
+                            radioButton_Mobile12.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("Terminal 1/online")){
+                            radioButton_Terminal1.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                        if (topic.equals("Terminal 2/online")){
+                            radioButton_Terminal2.setTextColor(getResources().getColor(R.color.light_green));
+                        }
+                    }
+
+                    if (Payload.equals("False")) {
+                        if (topic.equals("mobile 1/online")){
+                            radioButton_Mobile1.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile1.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 2/online")){
+                            radioButton_Mobile2.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile2.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 3/online")){
+                            radioButton_Mobile3.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile3.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 4/online")){
+                            radioButton_Mobile4.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile4.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 5/online")){
+                            radioButton_Mobile5.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile5.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 6/online")){
+                            radioButton_Mobile6.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile6.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 7/online")){
+                            radioButton_Mobile7.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile7.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 8/online")){
+                            radioButton_Mobile8.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile8.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 9/online")){
+                            radioButton_Mobile9.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile9.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 10/online")){
+                            radioButton_Mobile10.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile10.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 11/online")){
+                            radioButton_Mobile11.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile11.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("mobile 12/online")){
+                            radioButton_Mobile12.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Mobile12.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("Terminal 1/online")){
+                            radioButton_Terminal1.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Terminal1.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
+                        if (topic.equals("Terminal 2/online")){
+                            radioButton_Terminal2.setTextColor(getResources().getColor(R.color.light_red));
+                            textView_status.append(get_timestamp() + radioButton_Terminal2.getText().toString()
+                                    + " has lost connection."  + "\n");
+                        }
                     }
                 }
 

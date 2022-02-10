@@ -64,10 +64,8 @@
         android:layout_width="0dp"
         android:layout_height="225dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="#EBE8E7E7"
         android:descendantFocusability="afterDescendants"
         android:fadeScrollbars="false"
@@ -75,7 +73,7 @@
         android:gravity="bottom"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,11 +154,10 @@
         android:id="@+id/TextView_Lablel_Status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:text="@string/TextView_Label_Status"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="419dp" />
 
     <TextView
         android:id="@+id/TextView_Lable_Content"
@@ -171,204 +168,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView_status" />
-
-    <TextView
-        android:id="@+id/TextView_DescriptionTop"
-        android:layout_width="92dp"
-        android:layout_height="19dp"
-        android:text="@string/TextView_DescriptionTop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_DescriptionBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/TextView_DescriptionBottom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_DescriptionTop" />
-
-    <TextView
-        android:id="@+id/TextView_mpi1"
-        android:layout_width="57dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi1"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_DescriptionTop"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi2"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi2"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi3"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi3"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi4"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi4"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi5"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi5"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi6"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi6"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi7"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi7"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi7"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi6"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi8"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi8"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi9"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi7"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi9"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi9"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi10"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi8"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi10"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi10"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TestView_mpi11"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi9"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TestView_mpi11"
-        android:layout_width="58dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi11"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_mpi12"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_mpi10"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_mpi12"
-        android:layout_width="58dp"
-        android:layout_height="0dp"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_mpi12"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TestView_mpi11"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TestView_spi1"
-        android:layout_width="352dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_spi1"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_spi2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TextView_DescriptionBottom"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_mpi1" />
-
-    <TextView
-        android:id="@+id/TextView_spi2"
-        android:layout_width="353dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/dark_grey"
-        android:text="@string/TextView_spi2"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/TestView_spi1"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_mpi2" />
 
     <Button
         android:id="@+id/Button_Commit_PKID"
@@ -382,25 +181,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Button_Scan_PKID" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Andere:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_DescriptionBottom" />
-
-    <TextView
-        android:id="@+id/TextView_DevPlatform"
-        android:layout_width="750dp"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_grey"
-        android:text="@string/TextView_DevPlatform"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/TestView_spi1" />
-
     <Button
         android:id="@+id/Button_start_online_Monitor"
         android:layout_width="0dp"
@@ -412,5 +192,170 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Button_Commit_PKID" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="778dp"
+            android:layout_height="209dp">
+
+            <TextView
+                android:id="@+id/TextView_Label_OnlineMonitor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/TextView_Label_OnlineMonitor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/RadioGroup1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="8dp"
+                android:layoutDirection="inherit"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextView_Label_OnlineMonitor">
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobile1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile1"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile2"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile3"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile4"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile5"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile6"
+                    android:textColor="@color/light_red" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/RadioGroup2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RadioGroup1">
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile7"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile8"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile9"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile10"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile11"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Mobiel12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Mobile12"
+                    android:textColor="@color/light_red" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/RadioGroup3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RadioGroup2">
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Terminal1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Terminal1"
+                    android:textColor="@color/light_red" />
+
+                <RadioButton
+                    android:id="@+id/RadioButton_Terminal2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RadioButton_Terminal2"
+                    android:textColor="@color/light_red" />
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

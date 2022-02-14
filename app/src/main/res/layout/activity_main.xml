@@ -12,10 +12,9 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/Button_Connect"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,12 +23,11 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView_status"
         android:layout_width="0dp"
-        android:layout_height="225dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="#EBE8E7E7"
         android:descendantFocusability="afterDescendants"
         android:fadeScrollbars="false"
@@ -38,6 +36,7 @@
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#EBE8E7E7"
+            android:backgroundTint="#EBE8E7E7"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:gravity="bottom"
@@ -100,11 +100,9 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/Button_Publish"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Button_Connect" />
@@ -114,50 +112,37 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/Button_Subscribe"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Button_Publish" />
 
-    <Button
-        android:id="@+id/Button_Scan_PKID"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/Button_Scan_PKID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Button_Subscribe" />
-
     <EditText
         android:id="@+id/EditText_Topic"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/EditText_Topic"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView_Content" />
+        app:layout_constraintTop_toBottomOf="@+id/TextView_Lable_Content" />
 
     <TextView
         android:id="@+id/TextView_Lablel_Status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/TextView_Label_Status"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="419dp" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <TextView
         android:id="@+id/TextView_Lable_Content"
@@ -167,38 +152,30 @@
         android:text="@string/TextView_Label_Content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView_status" />
-
-    <Button
-        android:id="@+id/Button_Commit_PKID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/Button_Commit_PKID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Button_Scan_PKID" />
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView_status"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/Button_start_online_Monitor"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/Button_start_online_Monitor"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Button_Commit_PKID" />
+        app:layout_constraintTop_toBottomOf="@+id/Button_Subscribe" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:visibility="visible"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -206,25 +183,28 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="778dp"
-            android:layout_height="209dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/TextView_Label_OnlineMonitor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/TextView_Label_OnlineMonitor"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RadioGroup
                 android:id="@+id/RadioGroup1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:layoutDirection="inherit"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -236,51 +216,64 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile1"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile2"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile3"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile4"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile5"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile6"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </RadioGroup>
 
             <RadioGroup
                 android:id="@+id/RadioGroup2"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -291,50 +284,63 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile7"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile8"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile9"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile10"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile11"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Mobiel12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Mobile12"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <RadioGroup
                 android:id="@+id/RadioGroup3"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -345,17 +351,92 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Terminal1"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/RadioButton_Terminal2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RadioButton_Terminal2"
-                    android:textColor="@color/light_red" />
+                    android:textColor="@color/light_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="698dp"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/Button_Scan_PKID"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/Button_Scan_PKID"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/EditText_PKID"
+                app:layout_constraintTop_toBottomOf="@+id/TextView_Label_PKID" />
+
+            <TextView
+                android:id="@+id/TextView_Label_PKID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/TextView_Label_PKID"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/EditText_PKID"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/EditText_PKID"
+                android:inputType="textPersonName"
+                android:textSize="34sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextView_Label_PKID" />
+
+            <Button
+                android:id="@+id/Button_Commit_PKID"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/Button_Commit_PKID"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditText_PKID" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

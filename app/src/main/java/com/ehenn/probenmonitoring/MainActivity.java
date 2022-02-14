@@ -1,10 +1,13 @@
 package com.ehenn.probenmonitoring;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +30,10 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
+import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,27 +59,26 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton radioButton_Mobile12;
     private RadioButton radioButton_Terminal1;
     private RadioButton radioButton_Terminal2;
-    private RadioButton radioButton_group1;
-    private RadioButton radioButton_group2;
-    private RadioButton radioButton_group3;
     private RadioGroup radioGroup1;
     private RadioGroup radioGroup2;
     private RadioGroup radioGroup3;
     private TextView textView_status;
     private TextView textView_content;
-    private TextView textView_DevPlatform;
     private EditText editText_topic;
+    private EditText editText_PKID;
     private NestedScrollView nestedScrollView_status;
     private NestedScrollView nestedScrollView_content;
 
-
     MqttAndroidClient client;
 
+    public String IP_Adress = "192.168.178.53";
     String MQTT_Broker = "tcp://192.168.178.53:1883";
-    String MQTT_User = null;
-    String MQTT_PassKey = null;
-    String PKID;
+    String MQTT_User = "detact";
+    String MQTT_PassKey = "detact#1234";
+    String PKID = "";
     String actual_Station_ID = "";
+    public boolean reachable = false;
+
 
 
     @Override
@@ -112,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
         textView_status = findViewById(R.id.TextView_Status);
         textView_content = findViewById(R.id.TextView_Content);
-        textView_DevPlatform = findViewById(R.id.TextView_DevPlatform);
 
         editText_topic = findViewById(R.id.EditText_Topic);
+        editText_PKID = findViewById(R.id.EditText_PKID);
 
         nestedScrollView_status = findViewById(R.id.nestedScrollView_status);
         nestedScrollView_content = findViewById(R.id.nestedScrollView_Content);
@@ -123,7 +128,9 @@ public class MainActivity extends AppCompatActivity {
         button_connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mqtt_connect(MQTT_Broker, MQTT_User, MQTT_PassKey);
+
             }
         });
 
@@ -154,8 +161,22 @@ public class MainActivity extends AppCompatActivity {
         button_commit_pkid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String topic = editText_topic.getText().toString();
-                mqtt_publish_message(topic, PKID);
+
+                PKID = editText_PKID.getText().toString();
+
+                if (actual_Station_ID != "") {
+                    if (PKID != "") {
+                        String topic = actual_Station_ID + "/PKID";
+                        mqtt_publish_message(topic, editText_PKID.getText().toString());
+                    } else {
+                        textView_status.append(get_timestamp() + " No PKID has been selected. Please scan or enter a PKID");
+                        scrollToBottom_textView_status();
+                    }
+                } else {
+                    textView_status.append(get_timestamp() + " No Station has been selected. Please select a station from above!");
+                    scrollToBottom_textView_status();
+
+                }
             }
         });
 
@@ -186,7 +207,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile1.isChecked()) {
                     actual_Station_ID = radioButton_Mobile1.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -198,7 +220,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile2.isChecked()) {
                     actual_Station_ID = radioButton_Mobile2.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -210,7 +233,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile3.isChecked()) {
                     actual_Station_ID = radioButton_Mobile3.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -222,7 +246,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile4.isChecked()) {
                     actual_Station_ID = radioButton_Mobile4.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -234,7 +259,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile5.isChecked()) {
                     actual_Station_ID = radioButton_Mobile5.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -246,7 +272,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile6.isChecked()) {
                     actual_Station_ID = radioButton_Mobile6.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -258,7 +285,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile7.isChecked()) {
                     actual_Station_ID = radioButton_Mobile7.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -270,7 +298,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile8.isChecked()) {
                     actual_Station_ID = radioButton_Mobile8.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -282,7 +311,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile9.isChecked()) {
                     actual_Station_ID = radioButton_Mobile9.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -294,7 +324,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile10.isChecked()) {
                     actual_Station_ID = radioButton_Mobile10.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -306,7 +337,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile11.isChecked()) {
                     actual_Station_ID = radioButton_Mobile11.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -318,7 +350,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup3.clearCheck();
                 if (radioButton_Mobile12.isChecked()) {
                     actual_Station_ID = radioButton_Mobile12.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -330,7 +363,8 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup2.clearCheck();
                 if (radioButton_Terminal1.isChecked()) {
                     actual_Station_ID = radioButton_Terminal1.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
@@ -342,10 +376,16 @@ public class MainActivity extends AppCompatActivity {
                 radioGroup2.clearCheck();
                 if (radioButton_Terminal2.isChecked()) {
                     actual_Station_ID = radioButton_Terminal2.getText().toString();
-                    textView_status.append(actual_Station_ID);
+                    textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
+                    scrollToBottom_textView_status();
                 }
             }
         });
+
+        //check connection and start online monitor
+        startPing();
+        (new Handler()).postDelayed(this::start_online_Monitors, 5000);
+
     }
 
 
@@ -355,8 +395,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2)
         {
-            PKID=data.getStringExtra("PKID");
-            textView_status.append(get_timestamp() + " PKID: " + PKID + "\n");
+            if (resultCode != Activity.RESULT_CANCELED) {
+                PKID = data.getStringExtra("PKID");
+                textView_status.append(get_timestamp() + " PKID: " + PKID + " has been scanned.\n");
+                editText_PKID.setText(PKID);
+            }
         }
     }
 
@@ -366,15 +409,14 @@ public class MainActivity extends AppCompatActivity {
         //TODO: stürtzt ab nach einiger zeit
 
         String clientId = MqttClient.generateClientId();
-        client = new MqttAndroidClient(this.getApplicationContext(), "tcp://192.168.178.53:1883",
+        client = new MqttAndroidClient(this.getApplicationContext(), mqtt_broker,
                         clientId);
         MqttConnectOptions options = new MqttConnectOptions();
-        options.setUserName("detact");
-        options.setPassword("detact#1234".toCharArray());
+        options.setUserName(mqtt_user);
+        options.setPassword(mqtt_passkey.toCharArray());
 
         try {
             IMqttToken token = client.connect(options);
-            textView_status.append("in try block 1");
 
             token.setActionCallback(new IMqttActionListener() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
@@ -477,40 +519,40 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.i(TAG, "a message has arrived");
                     if (Payload.equals("True")) {
-                        if (topic.equals("mobile 1/online")){
+                        if (topic.equals("Mobile 1/online")){
                             radioButton_Mobile1.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 2/online")){
+                        if (topic.equals("Mobile 2/online")){
                             radioButton_Mobile2.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 3/online")){
+                        if (topic.equals("Mobile 3/online")){
                             radioButton_Mobile3.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 4/online")){
+                        if (topic.equals("Mobile 4/online")){
                             radioButton_Mobile4.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 5/online")){
+                        if (topic.equals("Mobile 5/online")){
                             radioButton_Mobile5.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 6/online")){
+                        if (topic.equals("Mobile 6/online")){
                             radioButton_Mobile6.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 7/online")){
+                        if (topic.equals("Mobile 7/online")){
                             radioButton_Mobile7.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 8/online")){
+                        if (topic.equals("Mobile 8/online")){
                             radioButton_Mobile8.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 9/online")){
+                        if (topic.equals("Mobile 9/online")){
                             radioButton_Mobile9.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 10/online")){
+                        if (topic.equals("Mobile 10/online")){
                             radioButton_Mobile10.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 11/online")){
+                        if (topic.equals("Mobile 11/online")){
                             radioButton_Mobile11.setTextColor(getResources().getColor(R.color.light_green));
                         }
-                        if (topic.equals("mobile 12/online")){
+                        if (topic.equals("Mobile 12/online")){
                             radioButton_Mobile12.setTextColor(getResources().getColor(R.color.light_green));
                         }
                         if (topic.equals("Terminal 1/online")){
@@ -522,62 +564,62 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (Payload.equals("False")) {
-                        if (topic.equals("mobile 1/online")){
+                        if (topic.equals("Mobile 1/online")){
                             radioButton_Mobile1.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile1.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 2/online")){
+                        if (topic.equals("Mobile 2/online")){
                             radioButton_Mobile2.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile2.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 3/online")){
+                        if (topic.equals("Mobile 3/online")){
                             radioButton_Mobile3.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile3.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 4/online")){
+                        if (topic.equals("Mobile 4/online")){
                             radioButton_Mobile4.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile4.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 5/online")){
+                        if (topic.equals("Mobile 5/online")){
                             radioButton_Mobile5.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile5.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 6/online")){
+                        if (topic.equals("Mobile 6/online")){
                             radioButton_Mobile6.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile6.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 7/online")){
+                        if (topic.equals("Mobile 7/online")){
                             radioButton_Mobile7.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile7.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 8/online")){
+                        if (topic.equals("Mobile 8/online")){
                             radioButton_Mobile8.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile8.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 9/online")){
+                        if (topic.equals("Mobile 9/online")){
                             radioButton_Mobile9.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile9.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 10/online")){
+                        if (topic.equals("Mobile 10/online")){
                             radioButton_Mobile10.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile10.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 11/online")){
+                        if (topic.equals("Mobile 11/online")){
                             radioButton_Mobile11.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile11.getText().toString()
                                     + " has lost connection."  + "\n");
                         }
-                        if (topic.equals("mobile 12/online")){
+                        if (topic.equals("Mobile 12/online")){
                             radioButton_Mobile12.setTextColor(getResources().getColor(R.color.light_red));
                             textView_status.append(get_timestamp() + radioButton_Mobile12.getText().toString()
                                     + " has lost connection."  + "\n");
@@ -605,15 +647,115 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void startPing () {
+        Connection_Check_IP ping = new Connection_Check_IP(this);
+        ping.execute(IP_Adress);
+    }
+
+
+    private static class Connection_Check_IP extends AsyncTask<String,String,String> {
+        //class for running ping operation outside the main thread.
+        private WeakReference<MainActivity> activityWeakReference;
+
+        Connection_Check_IP(MainActivity activity) {
+            activityWeakReference = new WeakReference<MainActivity>(activity);
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            MainActivity activity = activityWeakReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+
+            activity.textView_status.append(activity.get_timestamp() + " trying to reach the Server at "
+                    + activity.IP_Adress + ". Please wait..." + "\n");
+
+        }
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            boolean reachable = false;
+            String Message = "";
+
+
+            try {
+                reachable = InetAddress.getByName(strings[0]).isReachable(5000);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (reachable) {
+                Message = "online";
+            } else {
+                Message = "offline";
+            }
+
+            return Message;
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            MainActivity activity = activityWeakReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+            if (s.equals("online")) {
+                activity.textView_status.append(activity.get_timestamp() + " Server " +
+                        activity.IP_Adress + " is online." + "\n");
+
+                //connect to MQTT broker
+                activity.mqtt_connect(activity.MQTT_Broker, activity.MQTT_User, activity.MQTT_PassKey);
+
+                activity.reachable = true;
+
+
+
+            } else {
+                activity.textView_status.append(activity.get_timestamp() + " Server " +
+                        activity.IP_Adress + " is offline! Please check the configuration." + "\n");
+            }
+        }
+    }
+
+
+    public void start_online_Monitors() {
+        if (reachable) {
+            online_status(radioButton_Mobile1);
+            online_status(radioButton_Mobile2);
+            online_status(radioButton_Mobile3);
+            online_status(radioButton_Mobile4);
+            online_status(radioButton_Mobile5);
+            online_status(radioButton_Mobile6);
+            online_status(radioButton_Mobile7);
+            online_status(radioButton_Mobile8);
+            online_status(radioButton_Mobile9);
+            online_status(radioButton_Mobile10);
+            online_status(radioButton_Mobile11);
+            online_status(radioButton_Mobile12);
+            online_status(radioButton_Terminal1);
+            online_status(radioButton_Terminal2);
+        }
+    }
+
+
     private void scrollToBottom_textView_status() {
 
         nestedScrollView_status.post(new Runnable() {
             @Override
-            public void run() {
-                nestedScrollView_status.fullScroll(View.FOCUS_DOWN);
+            public void run() {nestedScrollView_status.fullScroll(View.FOCUS_DOWN);
             }
         });
     }
+
 
     private void scrollToBottom_textView_content() {
 
@@ -624,6 +766,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private String get_timestamp() {

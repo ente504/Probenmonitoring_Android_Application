@@ -4,6 +4,8 @@
     <string name="Button_Publish">message schicken</string>
     <string name="Button_Subscribe">Subscribe</string>
     <string name="Button_Scan_PKID">scan</string>
+    <string name="Button_Reset">Reset</string>
+    <string name="Button_Apply_Changes">apply changes</string>
     <string name="Button_Commit_PKID">commit PKID</string>
     <string name="Button_start_online_Monitor">start online Monitor</string>
     <string name="EditText_Topic">Example/Topic</string>
@@ -13,6 +15,10 @@
     <string name="TextView_Label_Content">Content published in selected Topic shown below:</string>
     <string name="TextView_Label_PKID">specify the specimen ID below:</string>
     <string name="TextView_DevPlatform">DevPlatform: </string>
+    <string name="TextView_Label_IP">Server IP: </string>
+    <string name="TextView_Label_Port">Server Port: </string>
+    <string name="TextView_Label_Username">Username: </string>
+    <string name="TextView_Label_Password">Password: </string>
     <string name="RadioButton_Mobile1">Mobile 1</string>
     <string name="RadioButton_Mobile2">Mobile 2</string>
     <string name="RadioButton_Mobile3">Mobile 3</string>

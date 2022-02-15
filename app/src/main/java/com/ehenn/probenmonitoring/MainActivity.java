@@ -40,11 +40,10 @@ public class MainActivity extends AppCompatActivity {
     //variables
     private static final String TAG = "MainActivity";
     private Button button_connect;
-    private Button button_publish;
-    private Button button_subscribe;
     private Button button_scan_pkid;
     private Button button_commit_pkid;
-    private Button button_start_online_Monitor;
+    private Button button_Reset;
+    private Button button_Apply_Changes;
     private RadioButton radioButton_Mobile1;
     private RadioButton radioButton_Mobile2;
     private RadioButton radioButton_Mobile3;
@@ -63,15 +62,17 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup radioGroup2;
     private RadioGroup radioGroup3;
     private TextView textView_status;
-    private TextView textView_content;
-    private EditText editText_topic;
     private EditText editText_PKID;
+    private EditText editText_IP;
+    private EditText editText_Port;
+    private EditText editText_Username;
+    private EditText editText_Password;
     private NestedScrollView nestedScrollView_status;
-    private NestedScrollView nestedScrollView_content;
 
     MqttAndroidClient client;
 
     public String IP_Adress = "192.168.178.53";
+    public String Port = "1883";
     String MQTT_Broker = "tcp://192.168.178.53:1883";
     String MQTT_User = "detact";
     String MQTT_PassKey = "detact#1234";
@@ -90,11 +91,10 @@ public class MainActivity extends AppCompatActivity {
 
         //GUI Assignment
         button_connect = findViewById(R.id.Button_Connect);
-        button_publish = findViewById(R.id.Button_Publish);
-        button_subscribe = findViewById(R.id.Button_Subscribe);
         button_scan_pkid = findViewById(R.id.Button_Scan_PKID);
         button_commit_pkid = findViewById(R.id.Button_Commit_PKID);
-        button_start_online_Monitor = findViewById(R.id.Button_start_online_Monitor);
+        button_Apply_Changes = findViewById(R.id.Button_Apply_Changes);
+        button_Reset = findViewById(R.id.Button_Reset);
 
         radioButton_Mobile1 = findViewById(R.id.RadioButton_Mobile1);
         radioButton_Mobile2 = findViewById(R.id.RadioButton_Mobiel2);
@@ -116,13 +116,14 @@ public class MainActivity extends AppCompatActivity {
         radioGroup3 = findViewById(R.id.RadioGroup3);
 
         textView_status = findViewById(R.id.TextView_Status);
-        textView_content = findViewById(R.id.TextView_Content);
 
-        editText_topic = findViewById(R.id.EditText_Topic);
         editText_PKID = findViewById(R.id.EditText_PKID);
+        editText_IP = findViewById(R.id.EditText_IP);
+        editText_Port = findViewById(R.id.EditText_Port);
+        editText_Username = findViewById(R.id.EditText_Username);
+        editText_Password = findViewById(R.id.EditText_Password);
 
         nestedScrollView_status = findViewById(R.id.nestedScrollView_status);
-        nestedScrollView_content = findViewById(R.id.nestedScrollView_Content);
 
         //set OnClickListeners
         button_connect.setOnClickListener(new View.OnClickListener() {
@@ -131,22 +132,6 @@ public class MainActivity extends AppCompatActivity {
 
                 mqtt_connect(MQTT_Broker, MQTT_User, MQTT_PassKey);
 
-            }
-        });
-
-        button_publish.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                String Topic = editText_topic.getText().toString();
-                mqtt_publish_message(Topic, "Hallo Welt");
-            }
-        });
-
-        button_subscribe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mqtt_subscribe_topic("Steuerung/PKID");
             }
         });
 
@@ -177,26 +162,6 @@ public class MainActivity extends AppCompatActivity {
                     scrollToBottom_textView_status();
 
                 }
-            }
-        });
-
-        button_start_online_Monitor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                online_status(radioButton_Mobile1);
-                online_status(radioButton_Mobile2);
-                online_status(radioButton_Mobile3);
-                online_status(radioButton_Mobile4);
-                online_status(radioButton_Mobile5);
-                online_status(radioButton_Mobile6);
-                online_status(radioButton_Mobile7);
-                online_status(radioButton_Mobile8);
-                online_status(radioButton_Mobile9);
-                online_status(radioButton_Mobile10);
-                online_status(radioButton_Mobile11);
-                online_status(radioButton_Mobile12);
-                online_status(radioButton_Terminal1);
-                online_status(radioButton_Terminal2);
             }
         });
 
@@ -386,6 +351,11 @@ public class MainActivity extends AppCompatActivity {
         startPing();
         (new Handler()).postDelayed(this::start_online_Monitors, 5000);
 
+        //write default values in UI:
+        editText_IP.setText(IP_Adress);
+        editText_Port.setText(Port);
+        editText_Username.setText(MQTT_User);
+        editText_Password.setText(MQTT_PassKey);
     }
 
 
@@ -483,8 +453,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     Log.i(TAG, "a message has arrived");
-                    textView_content.append(get_timestamp() + " " + new String(message.getPayload())  + "\n");
-                    scrollToBottom_textView_content();
                 }
 
                 @Override
@@ -752,17 +720,6 @@ public class MainActivity extends AppCompatActivity {
         nestedScrollView_status.post(new Runnable() {
             @Override
             public void run() {nestedScrollView_status.fullScroll(View.FOCUS_DOWN);
-            }
-        });
-    }
-
-
-    private void scrollToBottom_textView_content() {
-
-        nestedScrollView_content.post(new Runnable() {
-            @Override
-            public void run() {
-                nestedScrollView_content.fullScroll(View.FOCUS_DOWN);
             }
         });
     }

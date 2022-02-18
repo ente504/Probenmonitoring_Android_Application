@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button_commit_pkid;
     private Button button_Reset;
     private Button button_Apply_Changes;
+    private Button button_to_Detact;
     private RadioButton radioButton_Mobile1;
     private RadioButton radioButton_Mobile2;
     private RadioButton radioButton_Mobile3;
@@ -71,11 +73,18 @@ public class MainActivity extends AppCompatActivity {
 
     MqttAndroidClient client;
 
+    public String default_IP_Adress = "192.168.178.53";
+    public String default_Port = "1883";
+    String default_MQTT_Broker = "tcp://192.168.178.53:1883";
+    String default_MQTT_User = "detact";
+    String default_MQTT_PassKey = "detact#1234";
+
     public String IP_Adress = "192.168.178.53";
     public String Port = "1883";
     String MQTT_Broker = "tcp://192.168.178.53:1883";
     String MQTT_User = "detact";
     String MQTT_PassKey = "detact#1234";
+
     String PKID = "";
     String actual_Station_ID = "";
     public boolean reachable = false;
@@ -95,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         button_commit_pkid = findViewById(R.id.Button_Commit_PKID);
         button_Apply_Changes = findViewById(R.id.Button_Apply_Changes);
         button_Reset = findViewById(R.id.Button_Reset);
+        button_to_Detact = findViewById(R.id.Button_to_Detact);
 
         radioButton_Mobile1 = findViewById(R.id.RadioButton_Mobile1);
         radioButton_Mobile2 = findViewById(R.id.RadioButton_Mobiel2);
@@ -162,6 +172,27 @@ public class MainActivity extends AppCompatActivity {
                     scrollToBottom_textView_status();
 
                 }
+            }
+        });
+
+        button_Reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restore_default_values();
+            }
+        });
+
+        button_Apply_Changes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apply_Changes();
+            }
+        });
+
+        button_to_Detact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebURL("https://stackoverflow.com/");
             }
         });
 
@@ -695,6 +726,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void restore_default_values() {
+        //resort values
+        IP_Adress = default_IP_Adress;
+        Port = default_Port;
+        MQTT_Broker = default_MQTT_Broker;
+        MQTT_User = default_MQTT_User;
+        MQTT_PassKey = default_MQTT_PassKey;
+
+        //display restored values
+        editText_IP.setText(IP_Adress);
+        editText_Port.setText(Port);
+        editText_Username.setText(MQTT_User);
+        editText_Password.setText(MQTT_PassKey);
+    }
+
+
+    private void apply_Changes() {
+        // deconstruct old client
+        client.close();
+        reachable = false;
+
+        //assign new values to key variables
+        IP_Adress = editText_IP.getText().toString();
+        Port = editText_Port.getText().toString();
+        MQTT_User = editText_Username.getText().toString();
+        MQTT_PassKey = editText_Password.getText().toString();
+
+        //construct Broker address
+        MQTT_Broker = "tcp://" + IP_Adress + ":" + Port;
+
+        //reconnect using new data
+        startPing();
+        (new Handler()).postDelayed(this::start_online_Monitors, 5000);
+    }
+
+
     public void start_online_Monitors() {
         if (reachable) {
             online_status(radioButton_Mobile1);
@@ -714,6 +781,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void openWebURL( String inURL ) {
+        Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( inURL ) );
+
+        startActivity( browse );
+    }
 
     private void scrollToBottom_textView_status() {
 

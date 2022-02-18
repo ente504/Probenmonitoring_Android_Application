@@ -11,5 +11,9 @@
     <color name="dark_blue">#7C7BA5</color>
     <color name="light_red">#ff8c8c</color>
     <color name="light_green">#36b53f</color>
-
+    <color name="IPF_green_blue">#25b8a9</color>
+    <color name= "IPF_blue">#4a5d86</color>
+    <color name= "IPF_light_green">#eafcfb</color>
+    <color name= "IPF_grey">#d1d9e8</color>
+    <color name= "IPF_light_blue">#c8cfe0</color>
 </resources>

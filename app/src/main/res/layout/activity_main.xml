@@ -14,7 +14,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/IPF_light_blue"
         app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -178,7 +180,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#EBE8E7E7"
+        android:background="@color/IPF_light_green"
         android:descendantFocusability="afterDescendants"
         android:fadeScrollbars="false"
         android:focusable="auto"
@@ -186,7 +188,7 @@
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Button_to_Detact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -196,8 +198,8 @@
             android:id="@+id/TextView_Status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#EBE8E7E7"
-            android:backgroundTint="#EBE8E7E7"
+            android:background="@color/IPF_light_green"
+            android:backgroundTint="@color/IPF_light_green"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:gravity="bottom"
@@ -229,7 +231,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:visibility="visible"
+        app:cardBackgroundColor="@color/IPF_light_blue"
         app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3">
@@ -247,6 +251,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/TextView_Label_OnlineMonitor"
                 android:textSize="16sp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -428,7 +433,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/IPF_light_blue"
         app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -439,17 +446,17 @@
 
             <Button
                 android:id="@+id/Button_Scan_PKID"
-                android:layout_width="375dp"
-                android:layout_height="64dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="@string/Button_Scan_PKID"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/Button_Commit_PKID"
+                app:layout_constraintEnd_toStartOf="@+id/Button_Commit_PKID"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/EditText_PKID"
-                app:layout_constraintTop_toBottomOf="@+id/TextView_Label_PKID" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Button_Commit_PKID" />
 
             <TextView
                 android:id="@+id/TextView_Label_PKID"
@@ -460,41 +467,52 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/TextView_Label_PKID"
                 android:textSize="16sp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/EditText_PKID"
-                android:layout_width="374dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/EditText_PKID"
                 android:inputType="textPersonName"
                 android:textSize="34sp"
-                app:layout_constraintEnd_toStartOf="@+id/Button_Scan_PKID"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TextView_Label_PKID" />
+                app:layout_constraintTop_toBottomOf="@+id/TextView_Label_PKID"
+                app:layout_constraintVertical_bias="0.131" />
 
             <Button
                 android:id="@+id/Button_Commit_PKID"
-                android:layout_width="wrap_content"
-                android:layout_height="68dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/Button_Commit_PKID"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/Button_Scan_PKID"
                 app:layout_constraintTop_toBottomOf="@+id/EditText_PKID" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/Button_to_Detact"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/Button_to_Detact"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup radioGroup2;
     private RadioGroup radioGroup3;
     private TextView textView_status;
+    private TextView textView_Bat;
     private EditText editText_PKID;
     private EditText editText_IP;
     private EditText editText_Port;
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         radioGroup3 = findViewById(R.id.RadioGroup3);
 
         textView_status = findViewById(R.id.TextView_Status);
+        textView_Bat = findViewById(R.id.TextView_Bat);
 
         editText_PKID = findViewById(R.id.EditText_PKID);
         editText_IP = findViewById(R.id.EditText_IP);
@@ -134,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
         editText_Password = findViewById(R.id.EditText_Password);
 
         nestedScrollView_status = findViewById(R.id.nestedScrollView_status);
+
 
         //set OnClickListeners
         button_connect.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup2.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile1.isChecked()) {
                     actual_Station_ID = radioButton_Mobile1.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -214,6 +220,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup2.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile2.isChecked()) {
                     actual_Station_ID = radioButton_Mobile2.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -227,6 +236,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup2.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile3.isChecked()) {
                     actual_Station_ID = radioButton_Mobile3.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -240,6 +252,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup2.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile4.isChecked()) {
                     actual_Station_ID = radioButton_Mobile4.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -253,6 +268,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup2.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile5.isChecked()) {
                     actual_Station_ID = radioButton_Mobile5.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -266,6 +284,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup2.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile6.isChecked()) {
                     actual_Station_ID = radioButton_Mobile6.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -279,6 +300,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile7.isChecked()) {
                     actual_Station_ID = radioButton_Mobile7.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -292,6 +316,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile8.isChecked()) {
                     actual_Station_ID = radioButton_Mobile8.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -305,6 +332,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile9.isChecked()) {
                     actual_Station_ID = radioButton_Mobile9.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -318,6 +348,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile10.isChecked()) {
                     actual_Station_ID = radioButton_Mobile10.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -331,6 +364,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile11.isChecked()) {
                     actual_Station_ID = radioButton_Mobile11.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -344,6 +380,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup3.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Mobile12.isChecked()) {
                     actual_Station_ID = radioButton_Mobile12.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -357,6 +396,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup2.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Terminal1.isChecked()) {
                     actual_Station_ID = radioButton_Terminal1.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -370,6 +412,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 radioGroup1.clearCheck();
                 radioGroup2.clearCheck();
+                editText_PKID.setText("");
+                editText_PKID.setHint("PKID:");
+                textView_Bat.setText("");
                 if (radioButton_Terminal2.isChecked()) {
                     actual_Station_ID = radioButton_Terminal2.getText().toString();
                     textView_status.append(get_timestamp() + " " + actual_Station_ID + " has been chosen as active station.\n");
@@ -415,6 +460,7 @@ public class MainActivity extends AppCompatActivity {
         MqttConnectOptions options = new MqttConnectOptions();
         options.setUserName(mqtt_user);
         options.setPassword(mqtt_passkey.toCharArray());
+        options.setConnectionTimeout(1000000);
 
         try {
             IMqttToken token = client.connect(options);
@@ -500,16 +546,23 @@ public class MainActivity extends AppCompatActivity {
     public void online_status(RadioButton element) {
 
         try {
-            String topic = element.getText().toString() + "/online";
+            String topic_online = element.getText().toString() + "/online";
+            String topic_current_PKID = element.getText().toString() + "/current PKID";
+            String topic_bat_capacity = element.getText().toString() + "/Bat. capacity";
 
-            client.subscribe(topic, 1);
+            client.subscribe(topic_online, 1);
+            client.subscribe(topic_current_PKID, 1);
+            client.subscribe(topic_bat_capacity,1);
 
-            Log.i(TAG, "subscribed to Topic " + topic + " on " + MQTT_Broker);
+
+            Log.i(TAG, "subscribed to Topic " + topic_online + " on " + MQTT_Broker);
+            Log.i(TAG, "subscribed to Topic " + topic_current_PKID + " on " + MQTT_Broker);
+            Log.i(TAG, "subscribed to Topic " + topic_bat_capacity + " on " + MQTT_Broker);
 
             client.setCallback(new MqttCallback() {
                 @Override
                 public void connectionLost(Throwable cause) {
-                    Log.e(TAG, "connection to " + topic + " on " + MQTT_Broker + " has been lost");
+                    Log.e(TAG, "connection to " + topic_online + " on " + MQTT_Broker + " has been lost");
                 }
 
                 @Override
@@ -634,6 +687,133 @@ public class MainActivity extends AppCompatActivity {
                                     + " has lost connection."  + "\n");
                         }
                     }
+
+                    if (topic.equals("Mobile 1/current PKID") && radioButton_Mobile1.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 2/current PKID") && radioButton_Mobile2.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 3/current PKID") && radioButton_Mobile3.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 4/current PKID") && radioButton_Mobile4.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 5/current PKID") && radioButton_Mobile5.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 6/current PKID") && radioButton_Mobile6.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 7/current PKID") && radioButton_Mobile7.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 8/current PKID") && radioButton_Mobile8.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 9/current PKID") && radioButton_Mobile9.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 10/current PKID") && radioButton_Mobile10.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 11/current PKID") && radioButton_Mobile11.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Mobile 12/current PKID") && radioButton_Mobile12.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Terminal 1/current PKID") && radioButton_Terminal1.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+                    if (topic.equals("Terminal 2/current PKID") && radioButton_Terminal2.isChecked()){
+                        editText_PKID.setHint(Payload);
+                    }
+
+
+                    if (topic.equals("Mobile 1/Bat. capacity") && radioButton_Mobile1.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 2/Bat. capacity") && radioButton_Mobile2.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 3/Bat. capacity") && radioButton_Mobile3.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 4/Bat. capacity") && radioButton_Mobile4.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 5/Bat. capacity") && radioButton_Mobile5.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 6/Bat. capacity") && radioButton_Mobile6.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 7/Bat. capacity") && radioButton_Mobile7.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 8/Bat. capacity") && radioButton_Mobile8.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 9/Bat. capacity") && radioButton_Mobile9.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 10/Bat. capacity") && radioButton_Mobile10.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 11/Bat. capacity") && radioButton_Mobile11.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Mobile 12/Bat. capacity") && radioButton_Mobile12.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Terminal1/Bat. capacity") && radioButton_Terminal1.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
+
+                    if (topic.equals("Terminal2/Bat. capacity") && radioButton_Terminal2.isChecked()){
+                        String Bat_content = "Battery: " + Payload + "%";
+                        textView_Bat.setText(Bat_content);
+                    }
                 }
 
                 @Override
@@ -715,8 +895,6 @@ public class MainActivity extends AppCompatActivity {
                 activity.mqtt_connect(activity.MQTT_Broker, activity.MQTT_User, activity.MQTT_PassKey);
 
                 activity.reachable = true;
-
-
 
             } else {
                 activity.textView_status.append(activity.get_timestamp() + " Server " +

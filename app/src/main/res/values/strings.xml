@@ -6,7 +6,7 @@
     <string name="Button_Scan_PKID">scan</string>
     <string name="Button_Reset">Reset</string>
     <string name="Button_Apply_Changes">apply changes</string>
-    <string name="Button_Commit_PKID">commit PKID</string>
+    <string name="Button_Commit_PKID">check IN / OUT</string>
     <string name="Button_to_Detact">Go to Detact </string>
     <string name="Button_start_online_Monitor">start online Monitor</string>
     <string name="EditText_Topic">Example/Topic</string>

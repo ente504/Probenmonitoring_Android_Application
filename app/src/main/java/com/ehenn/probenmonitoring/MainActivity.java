@@ -77,14 +77,14 @@ public class MainActivity extends AppCompatActivity {
     public String default_IP_Adress = "192.168.178.53";
     public String default_Port = "1883";
     String default_MQTT_Broker = "tcp://192.168.178.53:1883";
-    String default_MQTT_User = "detact";
-    String default_MQTT_PassKey = "detact#1234";
+    String default_MQTT_User = "######";
+    String default_MQTT_PassKey = "#######"ct;
 
     public String IP_Adress = "192.168.178.53";
     public String Port = "1883";
     String MQTT_Broker = "tcp://192.168.178.53:1883";
-    String MQTT_User = "detact";
-    String MQTT_PassKey = "detact#1234";
+    String MQTT_User = "#######";
+    String MQTT_PassKey = "#######";
 
     String PKID = "";
     String actual_Station_ID = "";
